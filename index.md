@@ -29,16 +29,16 @@ Usage
 
 |Argument        | Flag              | Environment Variable         |
 |----------------|-------------------|------------------------------|
-|token           |`-t`               |`GITLAB_TOKEN`               |
-|url             |`-u`               |`GITLAB_URL`                 |
-|method          |`-m`               |`GITLABBER_CLONE_METHOD`    |
-|naming          |`-n`               |`GITLABBER_FOLDER_NAMING`   |
-|include         |`-i`               |`GITLABBER_INCLUDE`          |
-|exclude         |`-x`               |`GITLABBER_EXCLUDE`          |
+|token           |`-t`               |`GITLAB_TOKEN`                |
+|url             |`-u`               |`GITLAB_URL`                  |
+|method          |`-m`               |`GITLABBER_CLONE_METHOD`      |
+|naming          |`-n`               |`GITLABBER_FOLDER_NAMING`     |
+|include         |`-i`               |`GITLABBER_INCLUDE`           |
+|exclude         |`-x`               |`GITLABBER_EXCLUDE`           |
 
 - To view the tree run the command with your includes/excludes and the -p flag it will print your tree like so
 
-``` {.sourceCode .bash}
+```
 root [http://gitlab.my.com]
 ├── group1 [/group1]
 │   └── subgroup1 [/group1/subgroup1]

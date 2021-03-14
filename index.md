@@ -1,59 +1,42 @@
-[![image](https://github.com/ezbz/gitlabber/actions/workflows/python-app.yml/badge.svg?branch=master)](https://github.com/ezbz/gitlabber/actions/workflows/python-app.yml)
-
-[![image](https://codecov.io/gh/ezbz/gitlabber/branch/master/graph/badge.svg)](https://codecov.io/gh/ezbz/gitlabber)
-
-[![image](https://badge.fury.io/py/gitlabber.svg)](https://badge.fury.io/py/gitlabber)
-
-[![image](https://img.shields.io/pypi/l/gitlabber.svg)](https://pypi.python.org/pypi/gitlabber/)
-
-[![image](https://img.shields.io/pypi/pyversions/ansicolortags.svg)](https://pypi.python.org/pypi/gitlabber/)
-
-[![image](https://readthedocs.org/projects/gitlabber/badge/?version=latest&style=plastic)](https://gitlabber.readthedocs.io/en/latest/README.html)
+[![image](https://github.com/ezbz/gitlabber/actions/workflows/python-app.yml/badge.svg?branch=master)](https://github.com/ezbz/gitlabber/actions/workflows/python-app.yml) [![image](https://codecov.io/gh/ezbz/gitlabber/branch/master/graph/badge.svg)](https://codecov.io/gh/ezbz/gitlabber)
+[![image](https://badge.fury.io/py/gitlabber.svg)](https://badge.fury.io/py/gitlabber) [![image](https://img.shields.io/pypi/l/gitlabber.svg)](https://pypi.python.org/pypi/gitlabber/) [![image](https://img.shields.io/pypi/pyversions/ansicolortags.svg)](https://pypi.python.org/pypi/gitlabber/) [![image](https://readthedocs.org/projects/gitlabber/badge/?version=latest&style=plastic)](https://gitlabber.readthedocs.io/en/latest/README.html)
 
 Gitlabber
 =========
 
--   A utility to clone and pull Gitlab groups, subgroups, projects based
-    on path selection
+- A utility to clone and pull Gitlab groups, subgroups, projects based on path selection
 
 Purpose
 -------
 
-Gitlabber clones or pulls all projects under a subset of groups /
-subgroups by building a tree from the Gitlab API and allowing you to
-specify which subset of the tree you want to clone using glob patterns
-and/or regex expressions.
+Gitlabber clones or pulls all projects under a subset of groups / subgroups by building a tree from the Gitlab API and allowing you to specify which subset of the tree you want to clone using glob patterns and/or regex expressions.
 
 Installation
 ------------
 
--   You can install gitlabber from
-    [PyPi](https://pypi.org/project/gitlabber):
+- You can install gitlabber from [PyPi](https://pypi.org/project/gitlabber):
 
-``` {.sourceCode .bash}
+``` 
 pip install gitlabber
 ```
 
--   You'll need to create an [access
-    token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html)
-    from Gitlab with API scopes `read\_repository` and `read\_api`
+- You'll need to create an [access token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) from Gitlab with API scopes `read_repository` and `read_api`
 
 Usage
 -----
 
--   Arguments can be provided via the CLI arguments directly or via environment variables:
+- Arguments can be provided via the CLI arguments directly or via environment variables:
 
 |Argument        | Flag              | Environment Variable         |
 |----------------|-------------------|------------------------------|
-|token           |`-t`               |`GITLAB\_TOKEN`               |
-|url             |`-u`               |`GITLAB\_URL`                 |
-|method          |`-m`               |`GITLABBER\_CLONE\_METHOD`    |
-|naming          |`-n`               |`GITLABBER\_FOLDER\_NAMING`   |
-|include         |`-i`               |`GITLABBER\_INCLUDE`          |
-|exclude         |`-x`               |`GITLABBER\_EXCLUDE`          |
+|token           |`-t`               |`GITLAB_TOKEN`               |
+|url             |`-u`               |`GITLAB_URL`                 |
+|method          |`-m`               |`GITLABBER_CLONE_METHOD`    |
+|naming          |`-n`               |`GITLABBER_FOLDER_NAMING`   |
+|include         |`-i`               |`GITLABBER_INCLUDE`          |
+|exclude         |`-x`               |`GITLABBER_EXCLUDE`          |
 
--   To view the tree run the command with your includes/excludes and the
-    -p flag it will print your tree like so
+- To view the tree run the command with your includes/excludes and the -p flag it will print your tree like so
 
 ``` {.sourceCode .bash}
 root [http://gitlab.my.com]
@@ -67,21 +50,12 @@ root [http://gitlab.my.com]
     └── subgroup3 [/group2/subgroup3]
 ```
 
--   To see how to use glob patterns and regex to filter tree nodes see
-    [globre project page](https://pypi.org/project/globre/) .
--   Cloning vs Pulling: when running Gitlabber consecutively with same
-    parameters it will scan the local tree structure, if the project
-    directory exists and is a valid git repository (has .git folder in
-    it) gitlabber will perform a git pull in the directory, otherwise
-    the project directory will be created and the gitlab project will be
-    cloned into it.
--   Cloning submodules: use the -r flag to recurse git submodules, uses
-    the --recursive for cloning and utilizes [GitPython's smart update
-    method](https://github.com/gitpython-developers/GitPython/blob/20f4a9d49b466a18f1af1fdfb480bc4520a4cdc2/git/objects/submodule/root.py#L67)
-    for upading cloned repositories
--   Printed Usage:
+- To see how to use glob patterns and regex to filter tree nodes see [globre project page](https://pypi.org/project/globre/) .
+- Cloning vs Pulling: when running Gitlabber consecutively with same parameters it will scan the local tree structure, if the project directory exists and is a valid git repository (has .git folder in it) gitlabber will perform a git pull in the directory, otherwise the project directory will be created and the gitlab project will be cloned into it.
+- Cloning submodules: use the -r flag to recurse git submodules, uses the --recursive for cloning and utilizes [GitPython's smart update method](https://github.com/gitpython-developers/GitPython/blob/20f4a9d49b466a18f1af1fdfb480bc4520a4cdc2/git/objects/submodule/root.py#L67) for upading cloned repositories
+- Printed Usage:
 
-``` {.sourceCode .bash}
+```
 usage: gitlabber [-h] [-t token] [-u url] [--verbose] [-p]
                 [--print-format {json,yaml,tree}] [-m {ssh,https}] [-i csv]
                 [-x csv] [--version]
@@ -138,36 +112,22 @@ examples:
 
 Debugging
 ---------
+- You can use the `--verbose` flag to get Gitlabber debug messages printed
+- For more verbose gitlab messages you can get [GitPython](https://gitpython.readthedocs.io/en/stable) module to print more debug messages by setting the environment variable:
 
--   You can use the --verbose flag to get Gitlabber debug messages
-    printed
--   For more verbose gitlab messages you can get
-    [GitPython](https://gitpython.readthedocs.io/en/stable) module to
-    print more debug messages by setting the environment variable:
-
-``` {.sourceCode .bash}
+```
 export GIT_PYTHON_TRACE='full'
 ```
 
 Toubleshooting
 --------------
 
--   \`GitlabHttpError: 503\`: make sure you provide the base url to your
-    gitalb installation (e.g., https://gitlab.my.com and not
-    https://gitlab.my.com/some/nested/path)
+- \`GitlabHttpError: 503\`: make sure you provide the base url to your gitalb installation (e.g., https://gitlab.my.com and not https://gitlab.my.com/some/nested/path)
 
 Known Limitations
 -----------------
 
--   Project Renaming: Gitlabber doesn't maintain local state and will
-    not rename local projects but rather clone them into new directories
--   Folder Naming Strategy: consecutively running gitlabber with
-    different values for the -n parameter will produce undesirable
-    results, keep the same value as previous runs or simply don't change
-    it from the default (project name)
--   When using gitlab.com observe [rate
-    limits](https://docs.gitlab.com/ee/user/gitlab_com/index.html#gitlabcom-specific-rate-limits/)
-    when cloning large number of projects and the
-    [ones](https://docs.gitlab.com/ee/security/rate_limits.html) for
-    on-premise installations
+- Project Renaming: Gitlabber doesn't maintain local state and will not rename local projects but rather clone them into new directories 
+- Folder Naming Strategy: consecutively running gitlabber with different values for the -n parameter will produce undesirable results, keep the same value as previous runs or simply don't change it from the default (project name)
+- When using gitlab.com observe [rate limits](https://docs.gitlab.com/ee/user/gitlab_com/index.html#gitlabcom-specific-rate-limits/) when cloning large number of projects and the [ones](https://docs.gitlab.com/ee/security/rate_limits.html) for on-premise installations
 

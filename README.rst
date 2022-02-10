@@ -127,16 +127,16 @@ Usage
         gitlabber -p .
 
         clone only projects under subgroup 'MySubGroup' to location '~/GitlabRoot':
-        gitlabber -i '/MyGroup/MySubGroup**' ~/GitlabRoot
+        gitlabber -i "/MyGroup/MySubGroup**" ~/GitlabRoot
 
         clone only projects under group 'MyGroup' excluding any projects under subgroup 'MySubGroup':
-        gitlabber -i '/MyGroup**' -x '/MyGroup/MySubGroup**' .
+        gitlabber -i "/MyGroup**" -x "/MyGroup/MySubGroup**" .
 
         clone an entire gitlab tree except projects under groups named 'ArchiveGroup':
-        gitlabber -x '/ArchiveGroup**' .
+        gitlabber -x "/ArchiveGroup**" .
 
         clone projects that start with a case insensitive 'w' using a regular expression:
-        gitlabber -i '/{[w].*}' .
+        gitlabber -i "/{[w].*}" .
 
 Debugging 
 ---------
